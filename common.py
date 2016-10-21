@@ -1,6 +1,7 @@
-from fabric.api import run
+from fabric.api import run, put
 from fabric.context_managers import cd
 from fabric.state import env
+from fabric.contrib.project import rsync_project
 
 
 def set_hosts(hosts_file):
@@ -39,3 +40,8 @@ def dot(file, dir='.'):
 def execute(command, dir='.'):
     with cd(dir):
         run(command)
+
+
+def rsync(local, remote, dir='.'):
+    with cd(dir):
+        rsync_project(local_dir=local, remote_dir=remote)

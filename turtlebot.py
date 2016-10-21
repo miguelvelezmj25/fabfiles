@@ -19,6 +19,18 @@ def set_bash_profile():
     execute('echo " " >> $HOME/.bash_profile')
 
 
+def run_run_cp1():
+    execute("./run-cp1.sh")
+
+
+def set_gazebo_headless():
+    execute('sudo apt-get install xserver-xorg-video-dummy')
+    execute('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bashrc')
+    execute('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bashrc')
+    execute('echo "export DISPLAY=:1" >> $HOME/.bashrc')
+    execute('echo "export ROS_MASTER_URI=http://$(hostname):11311" >> $HOME/.bashrc')
+
+
 def remove_last_line_bash_profile():
     execute("sed '$d' $HOME/.bash_profile > $HOME/.bash_profile-new")
     execute("rm $HOME/.bash_profile")
