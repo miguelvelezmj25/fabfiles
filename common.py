@@ -15,6 +15,10 @@ def pwd(dir='.'):
         run('pwd')
 
 
+def reboot():
+    execute('sudo reboot')
+
+
 def whoami():
     run('whoami')
 
