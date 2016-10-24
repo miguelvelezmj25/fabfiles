@@ -42,6 +42,11 @@ def execute(command, dir='.'):
         run(command)
 
 
+def scp(local, remote, dir='.'):
+    with cd(dir):
+        put(local, remote)
+
+
 def rsync(local, remote, dir='.'):
     with cd(dir):
         rsync_project(local_dir=local, remote_dir=remote)

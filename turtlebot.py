@@ -19,9 +19,9 @@ def set_bash_profile():
     execute('echo " " >> $HOME/.bash_profile')
 
 
-# def run_run_cp1():
-#     # execute("chmod 751 ./run-cp1.sh")
-#     execute('./run-cp1.sh')
+def run_run_cp1():
+    # execute("chmod 751 ./run-cp1.sh")
+    execute('./run-cp1.sh')
 
 
 def set_gazebo_headless():
