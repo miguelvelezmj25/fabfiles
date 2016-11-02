@@ -16,8 +16,16 @@ def pwd(dir='.'):
         run('pwd')
 
 
+def rm(file, options=None, dir="."):
+    with cd(dir):
+        if options is None:
+            run('rm {}'.format(file))
+        else:
+            run('rm -{} {}'.format(options, file))
+
+
 def reboot():
-    execute('sudo reboot')
+    run('sudo reboot')
 
 
 def whoami():

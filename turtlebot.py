@@ -4,32 +4,39 @@ from git import *
 def run_experiments_single_host(iterations, dir="."):
     dot('.bash_profile')
     execute('./setup.sh', dir)
-    execute('echo $ROS_MASTER_URI')
+    run('echo $ROS_MASTER_URI')
     dot('.bash_profile')
     execute('./run_experiments.sh ' + iterations, dir)
 
 
+def clone_measuring_infrastructure():
+    rm('catkin_ws', options='rf')
+    git_clone_recursive('git@github.com:miguelvelezmj25/turtlebot-monitoring-infrastructure.git', name='catkin_ws')
+    catkin_make('./catkin_ws')
+    scp('./files/.dbconfig', '.dbconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
+    scp('./files/.serverconfig', '.serverconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
+
+
+def catkin_make(dir="."):
+    execute('catkin_make', dir)
+
+
 def set_bash_profile():
-    execute('echo "source $HOME/.bashrc" > $HOME/.bash_profile')
-    execute('echo " " >> $HOME/.bash_profile')
-    execute('echo "source /opt/ros/indigo/setup.bash" >> $HOME/.bash_profile')
-    execute('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bash_profile')
-    execute('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bash_profile')
-    execute('echo "export DISPLAY=:1" >> $HOME/.bash_profile')
-    execute('echo " " >> $HOME/.bash_profile')
-
-
-def run_run_cp1():
-    # execute("chmod 751 ./run-cp1.sh")
-    execute('./run-cp1.sh')
+    run('echo "source $HOME/.bashrc" > $HOME/.bash_profile')
+    run('echo " " >> $HOME/.bash_profile')
+    run('echo "source /opt/ros/indigo/setup.bash" >> $HOME/.bash_profile')
+    run('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bash_profile')
+    run('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bash_profile')
+    run('echo "export DISPLAY=:1" >> $HOME/.bash_profile')
+    run('echo " " >> $HOME/.bash_profile')
 
 
 def set_gazebo_headless():
-    execute('sudo apt-get install xserver-xorg-video-dummy')
-    execute('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bashrc')
-    execute('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bashrc')
-    execute('echo "export DISPLAY=:1" >> $HOME/.bashrc')
-    execute('echo "export ROS_MASTER_URI=http://$(hostname):11311" >> $HOME/.bashrc')
+    run('sudo apt-get install xserver-xorg-video-dummy')
+    run('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bashrc')
+    run('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bashrc')
+    run('echo "export DISPLAY=:1" >> $HOME/.bashrc')
+    run('echo "export ROS_MASTER_URI=http://$(hostname):11311" >> $HOME/.bashrc')
 
 
 def remove_last_line_bash_profile():

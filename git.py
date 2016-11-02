@@ -1,6 +1,22 @@
 from common import *
 
 
+def git_clone(repo, name=None, dir="."):
+    with cd(dir):
+        if name is None:
+            run('git clone {}'.format(repo))
+        else:
+            run('git clone {} {}'.format(repo, name))
+
+
+def git_clone_recursive(repo, name=None, dir="."):
+    with cd(dir):
+        if name is None:
+            run('git clone --recursive {}'.format(repo))
+        else:
+            run('git clone --recursive {} {}'.format(repo, name))
+
+
 def git_remote_update(dir='.'):
     with cd(dir):
         run('git remote update')
