@@ -21,7 +21,7 @@ def rm(file, options=None, dir="."):
         command = 'rm '
 
         if options is not None:
-            command += '{} '
+            command += '{} '.format(options)
 
         command += '{}'.format(file)
         run(command)

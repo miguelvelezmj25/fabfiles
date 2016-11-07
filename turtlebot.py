@@ -10,7 +10,7 @@ def run_experiments_single_host(iterations, dir="."):
 
 
 def clone_measuring_infrastructure():
-    rm('catkin_ws', options='rf')
+    rm('catkin_ws', options='-rf')
     git_clone('https://github.com/miguelvelezmj25/turtlebot-monitoring-infrastructure.git',
               options='-b master --recursive', name='catkin_ws')
     catkin_make('./catkin_ws')
