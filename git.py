@@ -1,20 +1,19 @@
 from common import *
 
 
-def git_clone(repo, name=None, dir="."):
+def git_clone(repo, options=None, name=None, dir="."):
     with cd(dir):
-        if name is None:
-            run('git clone {}'.format(repo))
-        else:
-            run('git clone {} {}'.format(repo, name))
+        command = 'git clone '
 
+        if options is not None:
+            command += '{} '.format(options)
 
-def git_clone_recursive(repo, name=None, dir="."):
-    with cd(dir):
-        if name is None:
-            run('git clone --recursive {}'.format(repo))
-        else:
-            run('git clone --recursive {} {}'.format(repo, name))
+        command += '{} '.format(repo)
+
+        if name is not None:
+            command += '{} '.format(name)
+
+        run(command)
 
 
 def git_remote_update(dir='.'):
@@ -34,10 +33,9 @@ def git_pull(dir='.'):
 
 def git_checkout(options='', dir='.'):
     with cd(dir):
-        run('git checkout {0}'.format(options))
+        run('git checkout {}'.format(options))
 
 
 def git_submodule(options='', dir='.'):
     with cd(dir):
-        run('git submodule {0}'.format(options))
-
+        run('git submodule {}'.format(options))

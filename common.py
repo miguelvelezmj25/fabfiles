@@ -18,10 +18,13 @@ def pwd(dir='.'):
 
 def rm(file, options=None, dir="."):
     with cd(dir):
-        if options is None:
-            run('rm {}'.format(file))
-        else:
-            run('rm -{} {}'.format(options, file))
+        command = 'rm '
+
+        if options is not None:
+            command += '{} '
+
+        command += '{}'.format(file)
+        run(command)
 
 
 def reboot():
@@ -33,16 +36,16 @@ def whoami():
 
 
 def mkdir(dir):
-    run('mkdir {0}'.format(dir))
+    run('mkdir {}'.format(dir))
 
 
 def sleep(time):
-    run('sleep {0}'.format(time))
+    run('sleep {}'.format(time))
 
 
 def dot(file, dir='.'):
     with cd(dir):
-        run('. {0}'.format(file))
+        run('. {}'.format(file))
 
 
 def execute(command, dir='.'):

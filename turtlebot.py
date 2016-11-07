@@ -11,7 +11,8 @@ def run_experiments_single_host(iterations, dir="."):
 
 def clone_measuring_infrastructure():
     rm('catkin_ws', options='rf')
-    git_clone_recursive('git@github.com:miguelvelezmj25/turtlebot-monitoring-infrastructure.git', name='catkin_ws')
+    git_clone('https://github.com/miguelvelezmj25/turtlebot-monitoring-infrastructure.git',
+              options='-b master --recursive', name='catkin_ws')
     catkin_make('./catkin_ws')
     scp('./files/.dbconfig', '.dbconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
     scp('./files/.serverconfig', '.serverconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
