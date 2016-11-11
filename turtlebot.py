@@ -14,6 +14,7 @@ def clone_measuring_infrastructure():
     git_clone('https://github.com/miguelvelezmj25/turtlebot-monitoring-infrastructure.git',
               options='-b master --recursive', name='catkin_ws')
     catkin_make('./catkin_ws')
+    # You need to have the following files for these commands to work
     scp('./files/.dbconfig', '.dbconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
     scp('./files/.serverconfig', '.serverconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
 
