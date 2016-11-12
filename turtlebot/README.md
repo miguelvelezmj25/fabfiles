@@ -37,7 +37,17 @@ overridden with your servers.
   the experiments, you would not get any data since the machines would not be able to communicate. **WARNING: 
   Machines cannot run TurtleBot code and the simulator at the same time**.
 
+* xorg.conf
+
+  Configuration file for running the simulator headless. It must be copied to the ```$HOME``` folder in both 
+  the TurtleBot and Simulator machines.
+
 ## Scripts
+
+* run-cp1.sh
+  
+  Script to start the headless server. It must be copied to the ```$HOME``` folder in both 
+  the TurtleBot and Simulator machines and executed on both machines.
 
 * clone_infrastructure.sh
 
