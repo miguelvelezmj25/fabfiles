@@ -1,5 +1,8 @@
 #!/bin/bash
+# Script to write to the .bash_profile of the TurtleBot and Simulator machines. This script will delete and override
+# your ```.bash_profile```
 
-password=$1
+hosts=$1
+password=$2
 
-fab -P -f ../turtlebot.py -p ${password} set_hosts:turtlebot-hosts set_bash_profile
+fab -P -f ../turtlebot.py -p ${password} set_hosts:${hosts} set_bash_profile
