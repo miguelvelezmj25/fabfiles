@@ -27,7 +27,7 @@ def set_bash_profile():
     run('echo "source $HOME/.bashrc" > $HOME/.bash_profile')
     run('echo " " >> $HOME/.bash_profile')
     run('echo "source /opt/ros/indigo/setup.bash" >> $HOME/.bash_profile')
-    run('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bash_profile')
+    run('echo "source $HOME/catkin_ws/devel/setup.bash" >> $HOME/.bash_profile')
     run('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bash_profile')
     run('echo "export DISPLAY=:1" >> $HOME/.bash_profile')
     run('echo " " >> $HOME/.bash_profile')
@@ -35,7 +35,7 @@ def set_bash_profile():
 
 def set_gazebo_headless():
     run('sudo apt-get install xserver-xorg-video-dummy')
-    run('echo "source /home/mvelezce/catkin_ws/devel/setup.bash" >> $HOME/.bashrc')
+    run('echo "source $HOME/catkin_ws/devel/setup.bash" >> $HOME/.bashrc')
     run('echo "export ROS_IP=$(hostname -I)" >> $HOME/.bashrc')
     run('echo "export DISPLAY=:1" >> $HOME/.bashrc')
     run('echo "export ROS_MASTER_URI=http://$(hostname):11311" >> $HOME/.bashrc')
