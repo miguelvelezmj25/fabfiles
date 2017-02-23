@@ -15,8 +15,8 @@ def clone_measuring_infrastructure():
               options='-b master --recursive', name='catkin_ws')
     catkin_make('./catkin_ws')
     # You need to have the following files for these commands to work
-    scp('./files/.dbconfig', '.dbconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
-    scp('./files/.serverconfig', '.serverconfig', './catkin_ws/src/cp1_gazebo/instructions/localization')
+    scp('./files/.dbconfig', '.dbconfig', './catkin_ws/src/measurement/localization')
+    scp('./files/.serverconfig', '.serverconfig', './catkin_ws/src/measurement/localization')
 
 
 def catkin_make(dir="."):
